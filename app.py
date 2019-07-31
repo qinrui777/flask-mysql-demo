@@ -5,7 +5,7 @@ import yaml
 app = Flask(__name__)
 
 # Configure db
-db = yaml.load(open('db.yaml'))
+db = yaml.load(open('mysql_demo.yaml'))
 app.config['MYSQL_HOST'] = db['mysql_host']
 app.config['MYSQL_USER'] = db['mysql_user']
 app.config['MYSQL_PASSWORD'] = db['mysql_password']
@@ -25,7 +25,7 @@ def index():
         mysql.connection.commit()
         cur.close()
         return redirect('/users')
-    return render_template('mysql_demo.html')
+    return render_template('index.html')
 
 @app.route('/users')
 def users():

@@ -3,12 +3,14 @@
 
 
 
-### Set up mysql (docker)
+### 01.Set up mysql (docker)
 
 获取镜像
+
 `docker pull mysql:5.6.45`
 
-启动镜像，并设置密码
+启动镜像，并设置密码   
+
 `docker run --name flask-mysql-demo1 -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:5.6.45`
 
 测试
@@ -56,13 +58,33 @@ Empty set (0.00 sec)
 ```
 
 
-###  Set up Virtual Env
+###  02.Set up Virtual Env and run app.py
 `virtualenv venv`
 
 `source venv/bin/activate`
 
-pip install -r requirements.txt
 
+install dependency from requirements.txt
+`(venv) ➜  flask-mysql-demo git:(master) pip install -r requirements.txt`
+
+start application
+`(venv) ➜  flask-mysql-demo git:(master) ✗ python app.py`
+
+The application runs on  `localhost:5000`
+
+
+### 03. check data on database 
+
+```bash
+mysql> select * from users;
++------+------------------+
+| name | email            |
++------+------------------+
+| 11   | 7xxx3601@qq.com |
+| 12   | x7773601@qq.com |
++------+------------------+
+2 rows in set (0.00 sec)
+```
 
 
 Ref: 
