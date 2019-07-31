@@ -1,19 +1,18 @@
 # flask-mysql-demo
 > set up a demo for flask 、mysql with Mac OS 
 
-
-
 ### 01.Set up mysql (docker)
 
-获取镜像
+pull docker mysql images
 
 `docker pull mysql:5.6.45`
 
-启动镜像，并设置密码   
+start docker container,and set root password *password* 
 
 `docker run --name flask-mysql-demo1 -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:5.6.45`
 
-测试
+test the mysql service
+
 ```bash
 ➜docker exec -it flask-mysql-demo1 bash
 root@9b6b3dafbaab:/# mysql -uroot -p
@@ -38,12 +37,9 @@ mysql> show databases;
 | mysql              |
 | performance_schema |
 +--------------------+
-3 rows in set (0.00 sec)
-
-mysql>
 ```
 
-准备一个数据库
+set up a database and table,named **flaskapp**、**users**
 ```bash
 mysql> CREATE DATABASE flaskapp;
 Query OK, 1 row affected (0.00 sec)
@@ -57,20 +53,31 @@ mysql> SELECT * FROM users;
 Empty set (0.00 sec)
 ```
 
-
 ###  02.Set up Virtual Env and run app.py
+
+clone the project to your local path
+
+`git clone https://github.com/qinrui777/flask-mysql-demo.git && cd flask-mysql-demo.git `
+
+create a virtual env ,named *venv*  
+
 `virtualenv venv`
+
+activate virtual env
 
 `source venv/bin/activate`
 
-
 install dependency from requirements.txt
-`(venv) ➜  flask-mysql-demo git:(master) pip install -r requirements.txt`
 
-start application
+`(venv) ➜  flask-mysql-demo git:(master)  pip install -r requirements.txt`
+
+start application  
+
 `(venv) ➜  flask-mysql-demo git:(master) ✗ python app.py`
 
-The application runs on  `localhost:5000`
+
+
+**The application runs on  `localhost:5000`**
 
 
 ### 03. check data on database 
