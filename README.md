@@ -80,6 +80,14 @@ start application
 **The application runs on  `localhost:5000`**
 
 
+
+![submit](demo-image-1.png)
+
+
+![getUser](demo-image-2.png)
+
+
+
 ### 03. check data on database 
 
 ```bash
